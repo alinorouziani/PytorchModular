@@ -5,7 +5,7 @@ import torch
 from tqdm.auto import tqdm
 from typing import Dict, List, Tuple
 
-def train(model: torch.nn.Module,
+def train_step(model: torch.nn.Module,
           dataloader: torch.utils.data.DataLoader,
           loss_fn: torch.nn.Module,
           optimizer: torch.optim.Optimizer,
@@ -28,7 +28,7 @@ def train(model: torch.nn.Module,
       y_pred = model(X)
       loss = loss_fn(y_pred, y)
       train_loss += loss.item()
-      optimzer.zero_grad()
+      optimizer.zero_grad()
       loss.backward()
       optimizer.step()
       y_pred_class = torch.argmax(torch.softmax(y_pred, dim=1), dim=1)
