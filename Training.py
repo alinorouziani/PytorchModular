@@ -96,14 +96,14 @@ def train(model: torch.nn.Module,
     for epoch in tqdm(range(epochs)):
       train_loss, train_acc = train_step(model, train_dataloader, loss_fn, optimizer, device)
       test_loss, test_acc = test_step(model, test_dataloader, loss_fn, device)
-    print(f"Epoch: {epoch+1} | "
-          f"train_loss: {train_loss:.2f} | "
-          f"train_acc: {train_acc:.2f} | "
-          f"test_loss: {test_loss:.2f} | "
-          f"test_acc: {test_acc:.2f}")
-    results["train_loss"].append(train_loss)
-    results["train_acc"].append(train_acc)
-    results["test_loss"].append(test_loss)
-    results["test_acc"].append(test_acc)
+      print(f"Epoch: {epoch+1} | "
+            f"train_loss: {train_loss:.2f} | "
+            f"train_acc: {train_acc:.2f} | "
+            f"test_loss: {test_loss:.2f} | "
+            f"test_acc: {test_acc:.2f}")
+      results["train_loss"].append(train_loss)
+      results["train_acc"].append(train_acc)
+      results["test_loss"].append(test_loss)
+      results["test_acc"].append(test_acc)
 
     return results
